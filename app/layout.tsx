@@ -1,9 +1,10 @@
 import "@radix-ui/themes/styles.css";
 import "./theme.config.css";
+import "easymde/dist/easymde.min.css";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { Theme, ThemePanel } from "@radix-ui/themes";
+import { Theme } from "@radix-ui/themes";
 import Navbar from "./Navbar";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
