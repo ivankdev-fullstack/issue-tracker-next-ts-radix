@@ -1,4 +1,3 @@
-import React from "react";
 import { Table } from "@radix-ui/themes";
 import Link from "./components/TableRowLink";
 import prisma from "@/prisma/client";

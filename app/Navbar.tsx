@@ -2,7 +2,6 @@
 
 import { AiFillBug } from "react-icons/ai";
 import Link from "next/link";
-import React from "react";
 import classnames from "classnames";
 import { usePathname } from "next/navigation";
 
