@@ -21,10 +21,12 @@ const IssueDetailsPage = async ({ params }: Props) => {
       <Box className="md:col-span-4">
         <IssueDetails issue={issue} />
       </Box>
-      <Flex direction="column" gap="4">
-        <EditIssueButton issueId={issue.id} />
-        <DeleteIssueButton issueId={issue.id} />
-      </Flex>
+      <Box>
+        <Flex direction="column" gap="4">
+          <EditIssueButton issueId={issue.id} />
+          <DeleteIssueButton issueId={issue.id} />
+        </Flex>
+      </Box>
     </Grid>
   );
 };
