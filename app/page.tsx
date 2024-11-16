@@ -1,5 +1,5 @@
 import prisma from "@/prisma/client";
-import IssueSummary from "./IssueSummary";
+import IssueChart from "./IssueChart";
 
 const Homepage = async () => {
   const [open, inProgress, closed] = await Promise.all([
@@ -10,7 +10,7 @@ const Homepage = async () => {
 
   return (
     <>
-      <IssueSummary open={open} inProgress={inProgress} closed={closed} />
+      <IssueChart open={open} inProgress={inProgress} closed={closed} />
     </>
   );
 };
