@@ -17,7 +17,7 @@ const IssueStatusFilter = () => {
 
   const setFilterParams = (status: string) => {
     const params = new URLSearchParams();
-    if (status) params.append("status", status);
+    if (status && status !== "none") params.append("status", status);
 
     const orderBy = searchParams.get("orderBy");
     if (orderBy) params.append("orderBy", orderBy!);
