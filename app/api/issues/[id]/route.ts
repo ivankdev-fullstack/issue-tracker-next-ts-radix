@@ -19,12 +19,19 @@ export async function PATCH(
   if (!validation.success)
     return NextResponse.json(validation.error.errors, { status: 400 });
 
+  if (body?.userId) {
+    const user = await prisma.user.findUnique({ where: { id: body.userId } });
+    if (!user) {
+      return NextResponse.json({ error: "User not found." }, { status: 400 });
+    }
+  }
+
   const isExist = await prisma.issue.findUnique({
     where: { id: parseInt(issueId) },
   });
 
   if (!isExist)
-    return NextResponse.json({ error: "Issue nor found." }, { status: 404 });
+    return NextResponse.json({ error: "Issue not found." }, { status: 404 });
 
   const updatedIssue = await prisma.issue.update({
     where: { id: parseInt(issueId) },
@@ -49,7 +56,7 @@ export async function DELETE(
   });
 
   if (!isExist)
-    return NextResponse.json({ error: "Issue nor found." }, { status: 404 });
+    return NextResponse.json({ error: "Issue not found." }, { status: 404 });
 
   await prisma.issue.delete({
     where: { id: parseInt(issueId) },
