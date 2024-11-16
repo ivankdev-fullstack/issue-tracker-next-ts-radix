@@ -19,8 +19,6 @@ export async function PATCH(
   if (!validation.success)
     return NextResponse.json(validation.error.errors, { status: 400 });
 
-  console.log(body.userId);
-
   if (body?.userId) {
     const user = await prisma.user.findUnique({ where: { id: body.userId } });
     if (!user) {
