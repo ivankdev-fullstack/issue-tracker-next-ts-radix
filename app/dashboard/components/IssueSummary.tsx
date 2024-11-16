@@ -3,12 +3,11 @@ import { Card, Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
 
 interface Props {
-  open: number;
-  inProgress: number;
-  closed: number;
+  statuses: { open: number; inProgress: number; closed: number };
 }
 
-const IssueSummary = ({ open, inProgress, closed }: Props) => {
+const IssueSummary = ({ statuses }: Props) => {
+  const { open, inProgress, closed } = statuses;
   const containers: {
     label: string;
     value: number;
@@ -20,7 +19,7 @@ const IssueSummary = ({ open, inProgress, closed }: Props) => {
   ];
 
   return (
-    <Flex>
+    <Flex gap="3">
       {containers.map((c) => (
         <Card key={c.label}>
           <Flex direction="column" gap="1">

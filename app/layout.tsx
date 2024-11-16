@@ -4,9 +4,9 @@ import "easymde/dist/easymde.min.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import AuthProvider from "./auth/Provider";
+import { Navbar } from "./components";
 import "./globals.css";
-import Navbar from "./Navbar";
-import QueryClientProvider from "./QueryClientProvider";
+import QueryClientProvider from "./providers/QueryClientProvider";
 import "./theme.config.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });

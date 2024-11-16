@@ -1,9 +1,8 @@
-import { IssueStatusBadge } from "@/app/components";
+import { IssueStatusBadge, TableRowLink as Link } from "@/app/components";
 import { Issue, Status } from "@prisma/client";
 import { ArrowUpIcon } from "@radix-ui/react-icons";
 import { Box, Table } from "@radix-ui/themes";
 import NextLink from "next/link";
-import Link from "../../../components/TableRowLink";
 
 const columns: {
   label: string;

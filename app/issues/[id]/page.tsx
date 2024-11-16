@@ -3,10 +3,12 @@ import prisma from "@/prisma/client";
 import { Box, Flex, Grid } from "@radix-ui/themes";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
-import AssigneeSelect from "./components/AssigneeSelect";
-import DeleteIssueButton from "./components/DeleteIssueButton";
-import EditIssueButton from "./components/EditIssueButton";
-import IssueDetails from "./components/IssueDetails";
+import {
+  AssigneeSelect,
+  DeleteIssueButton,
+  EditIssueButton,
+  IssueDetails,
+} from "./components";
 
 interface Props {
   params: { id: string };
