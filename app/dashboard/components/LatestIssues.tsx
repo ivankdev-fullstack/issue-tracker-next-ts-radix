@@ -1,6 +1,6 @@
 import { IssueStatusBadge } from "@/app/components";
 import prisma from "@/prisma/client";
-import { Avatar, Card, Flex, Heading, Table } from "@radix-ui/themes";
+import { Avatar, Card, Flex, Heading, Table, Text } from "@radix-ui/themes";
 import Link from "next/link";
 
 const LatestIssues = async () => {
@@ -12,12 +12,19 @@ const LatestIssues = async () => {
     },
   });
 
+  const renderNoIssuesMessage = () => (
+    <Flex align="center" justify="center" mt="5">
+      <Text>No issues.</Text>
+    </Flex>
+  );
+
   return (
     <Card>
       <Heading size="4" mb="5">
         Latest Issues
       </Heading>
-      <Table.Root>
+      {!issues.length && renderNoIssuesMessage()}
+      <Table.Root className="flex">
         <Table.Body>
           {issues.map((i) => (
             <Table.Row key={i.id}>
