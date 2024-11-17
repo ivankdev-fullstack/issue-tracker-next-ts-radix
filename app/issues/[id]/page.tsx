@@ -38,6 +38,8 @@ const IssueDetailsPage = async ({ params }: Props) => {
   );
 };
 
+export const dynamic = "force-dynamic";
+
 export const generateMetadata = async ({ params }: Props) => {
   const issue = await fetchIssue(parseInt(params.id));
   return { title: issue?.title, description: `Details of issue ${issue?.id}` };

@@ -15,7 +15,7 @@ const useUsers = () =>
     retry: 3,
   });
 
-const AssigneeSelect = async ({ issue }: { issue: Issue }) => {
+const AssigneeSelect = ({ issue }: { issue: Issue }) => {
   const { data: users, error, isLoading } = useUsers();
 
   if (isLoading) return <Skeleton />;
@@ -34,7 +34,7 @@ const AssigneeSelect = async ({ issue }: { issue: Issue }) => {
   return (
     <>
       <Select.Root
-        defaultValue={issue.userId || ""}
+        defaultValue={issue?.userId || "none"}
         onValueChange={(userId) => onAssign(userId)}
       >
         <Select.Trigger placeholder="Assign..." />
