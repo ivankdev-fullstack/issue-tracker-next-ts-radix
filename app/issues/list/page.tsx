@@ -1,7 +1,7 @@
 import Pagination from "@/app/components/Pagination";
 import prisma from "@/prisma/client";
 import { Status } from "@prisma/client";
-import { Box, Flex } from "@radix-ui/themes";
+import { Box, Flex, Text } from "@radix-ui/themes";
 import { Metadata } from "next";
 import { IssueActions, IssueTable } from "./components";
 import { columnNames, IssueQuery } from "./components/IssueTable";
@@ -34,6 +34,11 @@ const IssuesPage = async ({ searchParams }: Props) => {
   return (
     <Flex direction="column" gap="3">
       <IssueActions />
+      {!issues.length && (
+        <Text className="text-center" my="5">
+          No issues.
+        </Text>
+      )}
       <IssueTable searchParams={searchParams} issues={issues} />
       <Box mt="3">
         <Pagination pageSize={pageSize} curPage={page} itemCount={issueCount} />
