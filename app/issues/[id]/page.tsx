@@ -1,8 +1,8 @@
 import authOptions from "@/app/auth/authOptions";
-import prisma from "@/prisma/client";
 import { Box, Flex, Grid } from "@radix-ui/themes";
 import { getServerSession } from "next-auth";
 import { notFound } from "next/navigation";
+import { fetchIssue } from "../_common/fetchIssueFromCache";
 import {
   AssigneeSelect,
   DeleteIssueButton,
@@ -16,9 +16,7 @@ interface Props {
 
 const IssueDetailsPage = async ({ params }: Props) => {
   const session = await getServerSession(authOptions);
-  const issue = await prisma.issue.findUnique({
-    where: { id: parseInt(params.id) },
-  });
+  const issue = await fetchIssue(parseInt(params.id));
 
   if (!issue) notFound();
 
@@ -41,10 +39,7 @@ const IssueDetailsPage = async ({ params }: Props) => {
 };
 
 export const generateMetadata = async ({ params }: Props) => {
-  const issue = await prisma.issue.findUnique({
-    where: { id: parseInt(params.id) },
-  });
-
+  const issue = await fetchIssue(parseInt(params.id));
   return { title: issue?.title, description: `Details of issue ${issue?.id}` };
 };
 
